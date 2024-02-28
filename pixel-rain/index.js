@@ -22,7 +22,7 @@ class Particle {
             this.y = 0;
             this.x = Math.random() * canvas.width;
         }
-        // this.brightness = brightnessArray[]
+        this.brightness = brightnessArray[Math.floor(this.y-1) * canvas.width + Math.floor(this.x)];
     }
 
     // draw() {
