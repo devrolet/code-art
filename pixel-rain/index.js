@@ -2,7 +2,7 @@ const canvas = document.getElementById('my-canvas');
 const ctx = canvas.getContext('2d');
 
 const img = new Image();
-img.src = "img/curry.png";
+img.src = "img/valorant.png";
 
 let brightnessArray = [];
 let particlesArray = [];
@@ -28,7 +28,7 @@ class Particle {
     draw() {
         ctx.beginPath();
         ctx.fillStyle = 'white';
-        ctx.arc(this.x, this.y, 0, Math.PI*2);
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
         ctx.fill();
     }
 }
@@ -46,15 +46,26 @@ img.onload = () => {
         const green = imgData.data[(i*4) + 1];
         const blue = imgData.data[(i*4) + 2];
         const brightness = (red, blue, green) / 3;
-
         brightnessArray.push(brightness);
     }
 
     // generate 10k particles
-    // for (let i = 0; i < 10000; i++) {
-    //     // particlesArray(new Particle)
-        
-    // }
+    for (let i = 0; i < 10000; i++) {
+        particlesArray.push(new Particle());
+    }
+
+    const animate = () => {
+        ctx.globalAlpha = 0.05;
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        particlesArray.forEach((particle) => {
+            particle.update();
+            ctx.globalAlpha = particle.brightness * 0.002;;
+            particle.draw();
+        });
+        requestAnimationFrame(animate);
+    }
+    animate();
 }
 
 
