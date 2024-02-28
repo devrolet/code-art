@@ -7,6 +7,29 @@ img.src = "img/curry.png";
 let brightnessArray = [];
 let particlesArray = [];
 
+class Particle {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = 0;
+        this.brightness = 0;
+        this.velocity = Math.random() * 3 + 0.1;
+        this.radius = Math.random() * 1.5 + 1;
+    }
+
+    update() {
+        this.y += this.velocity;
+        if(this.y >= canvas.height) {
+            this.y = 0;
+            this.x = Math.random() * canvas.width;
+        }
+        // this.brightness = brightnessArray[]
+    }
+
+    // draw() {
+
+    // }
+}
+
 img.onload = () => {
     canvas.width = img.width;
     canvas.height = img.height;
