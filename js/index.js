@@ -3,6 +3,24 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+let atoms = [];
+
+canvas.addEventListener('click', (e) => {
+    for (let i = 0; i < 20; i++) {
+        atoms.push(new Atom(e.x, e.y));
+        
+    }
+});
+
+const animate = () => {
+    atoms.forEach((atom) => {
+        atom.draw();
+        atom.update();
+    });
+    requestAnimationFrame(animate); 
+}
+
+animate();
 class Atom {
     constructor(x, y) {
         this.x = x;
