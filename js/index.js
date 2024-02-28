@@ -14,6 +14,7 @@ let atoms = [];
 
 const animate = () => {
     atoms.forEach((atom, index) => {
+        ctx.fillStyle = 'white'
         atom.draw();
         atom.updateSpeed();
         atom.updateSize();
@@ -23,7 +24,8 @@ const animate = () => {
         }
     });
     ctx.save();
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+    // ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
     ctx.restore();
@@ -35,7 +37,7 @@ class Atom {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.radius = Math.random() * 8 + 2;
+        this.radius = Math.random() * 2 + 2;
         this.speedX = Math.random() * 4 - 2; //-2 +2
         this.speedY = Math.random() * 4 - 2; //-2 +2
     }
