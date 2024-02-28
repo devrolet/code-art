@@ -35,7 +35,7 @@ let getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 let drawRest = (prevPoint) => {
     let randomCorner, middlePoint;
 
-    for (let i = 0; i < 100000; i++) {
+    for (let i = 0; i < 200000; i++) {
         // pick random corner
         randomCorner = triangle[getRandomInt(0, 3)];
         // find middle point
