@@ -22,6 +22,11 @@ const animate = () => {
             atoms.splice(index, 1);
         }
     });
+    ctx.save();
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+    ctx.restore();
     requestAnimationFrame(animate); 
 }
 
