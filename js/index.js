@@ -58,11 +58,15 @@ class Atom {
         ctx.fill();
     }
 }
+const point = {
+    x: 700,
+    y: 100
+}
 
 const generateAtoms = () => {
     atoms.push(new Atom(
-        Math.random() * canvas.width, 
-        Math.random() * canvas.height
+        point.x,
+        point.y
     ));
     requestAnimationFrame(generateAtoms);
 }
