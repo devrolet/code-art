@@ -5,12 +5,12 @@ canvas.height = window.innerHeight;
 
 let atoms = [];
 
-canvas.addEventListener('mousemove', (e) => {
-    for (let i = 0; i < 20; i++) {
-        atoms.push(new Atom(e.x, e.y));
+// canvas.addEventListener('mousemove', (e) => {
+//     for (let i = 0; i < 20; i++) {
+//         atoms.push(new Atom(e.x, e.y));
         
-    }
-});
+//     }
+// });
 
 const animate = () => {
     atoms.forEach((atom, index) => {
@@ -57,3 +57,12 @@ class Atom {
     }
 }
 
+const generateAtoms = () => {
+    atoms.push(new Atom(
+        Math.random() * canvas.width, 
+        Math.random() * canvas.height
+    ));
+    requestAnimationFrame(generateAtoms);
+}
+
+generateAtoms();
