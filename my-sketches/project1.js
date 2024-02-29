@@ -21,6 +21,7 @@ const sketch = () => {
     circles.forEach(circle => {
       circle.draw(context);
       circle.move()
+      circle.bounce(width, height);
     })
   };
 };
@@ -46,5 +47,14 @@ class Circle {
   move() {
     this.x += this.velocityX;
     this.y += this.velocityY;
+  }
+
+  bounce(width, height) {
+    if (this.x <= 0 || this.x >= width) {
+      this.velocityX *= -1;
+    }
+    if (this.y <= 0 || this.y >= height) {
+      this.velocityY *= -1;
+    }
   }
 }
