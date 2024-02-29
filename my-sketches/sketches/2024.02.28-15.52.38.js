@@ -11,18 +11,20 @@ const sketch = () => {
     context.fillStyle = 'white';
     context.fillRect(0, 0, width, height);
 
-    const rectWidth = width * 0.02;
-    const rectHeight = height * 0.2;
+    // const rectWidth = width * 0.02;
+    // const rectHeight = height * 0.2;
 
     context.fillStyle = 'black';
-    
-    // Create 12 rectangles
-    for (let i = 0; i < 12; i++) {
-      context.beginPath();
-      context.rect(100 * i, 100, rectWidth, rectHeight);
-      context.fill();
+    context.beginPath();
+    context.rect(0, 0, 50, 50);
+    context.fill();
+
+    context.translate(100, 100);
+
+    context.beginPath();
+    context.rect(0, 0, 50, 50);
+    context.fill();
     }
   };
-};
 
 canvasSketch(sketch, settings);
