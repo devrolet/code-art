@@ -20,6 +20,7 @@ const sketch = () => {
     context.fill();
 
     context.translate(100, 100);
+    context.rotate(30 * Math.PI / 180)
 
     context.beginPath();
     context.rect(0, 0, 50, 50);
