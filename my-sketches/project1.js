@@ -23,13 +23,18 @@ const sketch = () => {
       for (let j = i+1; j < circles.length; j++) {
         const circle2 = circles[j];
 
-        context.beginPath();
-        context.moveTo(circle1.x, circle1.y);
-        context.lineTo(circle2.x, circle2.y);
-        context.stroke();
+        const dist = getDistance(circle1.x, circle2.x, circle1.y, circle2.y);
+
+        if (dist < 250) {
+          context.beginPath();
+          context.moveTo(circle1.x, circle1.y);
+          context.lineTo(circle2.x, circle2.y);
+          context.stroke();
+        }
+        
       }
     }
-    
+    context.lineWidth = 8;
     circles.forEach(circle => {
       circle.draw(context);
       circle.move()
@@ -37,6 +42,12 @@ const sketch = () => {
     })
   };
 };
+
+const getDistance = (x1, x2, y1, y2) => {
+  const a = x1 - x2;
+  const b = y1 - y2;
+  return Math.sqrt(a*a + b*b);
+}
 
 canvasSketch(sketch, settings);
 
