@@ -14,8 +14,8 @@ const sketch = () => {
     context.fillStyle = 'white';
     context.fillRect(0, 0, width, height);
 
-    // context.strokeStyle = 'gold' // stroke style used to change stroke color
-    context.fillStyle = 'black';
+    context.strokeStyle = 'black' // stroke style used to change stroke color
+    context.fillStyle = 'green';
     context.lineWidth = 1;
 
     for (let i = 0; i < circles.length; i++) {
@@ -65,7 +65,7 @@ class Circle {
     context.beginPath();
     context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
     context.stroke();
-    context.fillStyle = 'gold';
+    context.fillStyle = 'green';
     context.fill();
   }
 
