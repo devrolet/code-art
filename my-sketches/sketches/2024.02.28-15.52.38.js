@@ -19,11 +19,24 @@ const sketch = () => {
     context.rect(0, 0, 50, 50);
     context.fill();
 
+    
+
     context.translate(100, 100);
+    context.save();
+
     context.rotate(30 * Math.PI / 180)
 
     context.beginPath();
     context.rect(0, 0, 50, 50);
+    context.fill();
+
+   
+    context.restore();
+
+    context.fillStyle = 'red';
+
+    context.beginPath();
+    context.rect(0, 0, 70, 70);
     context.fill();
     }
   };
