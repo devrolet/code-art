@@ -16,7 +16,19 @@ const sketch = () => {
 
     // context.strokeStyle = 'gold' // stroke style used to change stroke color
     context.fillStyle = 'black';
-    context.lineWidth = 8
+    context.lineWidth = 1;
+
+    for (let i = 0; i < circles.length; i++) {
+      const circle1 = circles[i];
+      for (let j = i+1; j < circles.length; j++) {
+        const circle2 = circles[j];
+
+        context.beginPath();
+        context.moveTo(circle1.x, circle1.y);
+        context.lineTo(circle2.x, circle2.y);
+        context.stroke();
+      }
+    }
     
     circles.forEach(circle => {
       circle.draw(context);
