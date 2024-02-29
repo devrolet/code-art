@@ -1,7 +1,8 @@
 const canvasSketch = require('canvas-sketch');
 
 const settings = {
-  dimensions: [ 2048, 2048 ]
+  dimensions: [ 2048, 2048 ],
+  animate: true
 };
 
 const sketch = () => {
@@ -19,6 +20,7 @@ const sketch = () => {
     
     circles.forEach(circle => {
       circle.draw(context);
+      circle.move()
     })
   };
 };
@@ -30,6 +32,8 @@ class Circle {
     this.x = x;
     this.y = y;
     this.radius = radius;
+    this.velocityX = Math.random() * 4 - 2; // -2 2
+    this.velocityY = Math.random() * 4 - 2;
   }
 
   draw(context) {
@@ -37,5 +41,10 @@ class Circle {
     context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
     context.stroke();
     // context.fill();
+  }
+
+  move() {
+    this.x += this.velocityX;
+    this.y += this.velocityY;
   }
 }
