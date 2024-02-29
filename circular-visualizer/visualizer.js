@@ -11,6 +11,7 @@ class Figure {
         this.y = y;
         this.size = 8;
         this.color = 'gold';
+        this.counter = 0;
     }
 
     draw() {
@@ -18,6 +19,26 @@ class Figure {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
+    }
+
+    circularMovement() {
+        if(this.counter >= 360) {
+            this.counter = 0;
+        }
+        this.x += Math.cos(this.counter / 180 * Math.PI);
+        this.y += Math.sin(this.counter / 180 * Math.PI)
+
+        this.counter++
+    }
+
+    changeSize(value) {
+        const sound = value*200;
+
+        if (sound > this.size) {
+            this.size = sound;
+        } else {
+            this.size -= this.size * 0.01; 
+        }
     }
     
 }
@@ -33,8 +54,10 @@ let animate = () => {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        figures.forEach(figure => {
+        figures.forEach((figure, index) => {
             figure.draw();
+            figure.circularMovement();
+            figure.changeSize(samples[index]);
         })
     }
     requestAnimationFrame(animate);
