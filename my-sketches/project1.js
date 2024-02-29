@@ -5,6 +5,10 @@ const settings = {
 };
 
 const sketch = () => {
+  let circles = [];
+  for (let i = 0; i < 100; i++) {
+    circles.push(new Circle(Math.random() * 2048, Math.random() * 2048, Math.random() * 20 ))
+  }
   return ({ context, width, height }) => {
     context.fillStyle = 'white';
     context.fillRect(0, 0, width, height);
@@ -12,8 +16,10 @@ const sketch = () => {
     // context.strokeStyle = 'gold' // stroke style used to change stroke color
     context.fillStyle = 'black';
     context.lineWidth = 8
-    const myCircle = new Circle(100, 100, 50);
-    myCircle.draw(context);
+    
+    circles.forEach(circle => {
+      circle.draw(context);
+    })
   };
 };
 
@@ -29,7 +35,7 @@ class Circle {
   draw(context) {
     context.beginPath();
     context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    // context.stroke();
-    context.fill();
+    context.stroke();
+    // context.fill();
   }
 }
