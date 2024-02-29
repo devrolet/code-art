@@ -26,6 +26,7 @@ const sketch = () => {
         const dist = getDistance(circle1.x, circle2.x, circle1.y, circle2.y);
 
         if (dist < 250) {
+          context.lineWidth = 10 - dist/25;
           context.beginPath();
           context.moveTo(circle1.x, circle1.y);
           context.lineTo(circle2.x, circle2.y);
@@ -34,7 +35,7 @@ const sketch = () => {
         
       }
     }
-    context.lineWidth = 8;
+    context.lineWidth = 12;
     circles.forEach(circle => {
       circle.draw(context);
       circle.move()
@@ -64,7 +65,8 @@ class Circle {
     context.beginPath();
     context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
     context.stroke();
-    // context.fill();
+    context.fillStyle = 'gold';
+    context.fill();
   }
 
   move() {
