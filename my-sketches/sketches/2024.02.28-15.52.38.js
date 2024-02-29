@@ -1,24 +1,30 @@
 const canvasSketch = require('canvas-sketch');
 
 const settings = {
-  dimensions: [ 2048, 2048 ]
+  dimensions: [ 1080, 1080 ],
+  animate: true
 };
 
 const sketch = () => {
+  let y = 500;
+  let velocity = 5;
+
   return ({ context, width, height }) => {
     context.fillStyle = 'white';
     context.fillRect(0, 0, width, height);
-    // console.log(Math.random() * 10);
 
-    context.strokeStyle = 'green';
-    context.lineWidth = Math.random() * 5;
-    context.beginPath();
+    context.fillStyle = 'black';
     
-    for (let i = 0; i < 1000; i++) {
-      context.rect(Math.random() * 2048, Math.random() * 2048, Math.random() * 50, Math.random() * 50);
-      context.stroke();
+    y += velocity; 
+
+    if (y >= 1080 || y <= 0) {
+      // bounce
+      velocity *= -1;
     }
-    
+
+    context.beginPath();
+    context.arc(500, y, 20, 0, Math.PI * 2);
+    context.fill();
       
   }
 };
