@@ -2,43 +2,25 @@ const canvasSketch = require('canvas-sketch');
 
 const settings = {
   dimensions: [ 2048, 2048 ]
-  // dimensions: "A4",
-  // orientation: "landscape"
 };
 
 const sketch = () => {
   return ({ context, width, height }) => {
     context.fillStyle = 'white';
     context.fillRect(0, 0, width, height);
+    // console.log(Math.random() * 10);
 
-    // const rectWidth = width * 0.02;
-    // const rectHeight = height * 0.2;
-
-    context.fillStyle = 'black';
+    context.strokeStyle = 'green';
+    context.lineWidth = Math.random() * 5;
     context.beginPath();
-    context.rect(0, 0, 50, 50);
-    context.fill();
-
     
-
-    context.translate(100, 100);
-    context.save();
-
-    context.rotate(30 * Math.PI / 180)
-
-    context.beginPath();
-    context.rect(0, 0, 50, 50);
-    context.fill();
-
-   
-    context.restore();
-
-    context.fillStyle = 'red';
-
-    context.beginPath();
-    context.rect(0, 0, 70, 70);
-    context.fill();
+    for (let i = 0; i < 1000; i++) {
+      context.rect(Math.random() * 2048, Math.random() * 2048, Math.random() * 50, Math.random() * 50);
+      context.stroke();
     }
-  };
+    
+      
+  }
+};
 
 canvasSketch(sketch, settings);
