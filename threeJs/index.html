@@ -11,7 +11,9 @@
     </style>
 </head>
 <body>
-    <script src="node_modules/three/build/three.module.min.js"></script>
+    <!-- <script src="node_modules/three/build/three.cjs"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.162.0/three.module.min.js" integrity="sha512-2GdPoqGrJx7Susys/mOCAOqGBxYGsJC0lmdHRQEiw2l8Pmg8VAdPV79Csuc+wHweByqSmKyxA/xVayCu9G70Jw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script src="index.js"></script> -->
     <script>
         /****TODO: EVERY THREEJS PROJECT HAS TO HAVE THIS CODE ******/
         //create scene
@@ -26,7 +28,22 @@
         // create renderer DOM element
         document.body.appendChild(renderer.domElement);
         // TODO: END MUST HAVE THREEJS CODE
-        
+
+        // Create a cube
+        // geometry
+        const geometry = new THREE.BoxGeometry();
+        // material
+        const material = new THREE.MeshBasicMaterial( {color: 0x00ff00});
+
+        const cube = new THREE.Mesh( geometry, material);
+        // add cube to scene
+        scene.add(cube);
+        // camera and cube at (0, 0), move camera position
+        camera.position.z = 5;
+
+        let animate = () => {
+            requestAnimationFrame(animate);
+        }
     </script>
 </body>
 </html>
