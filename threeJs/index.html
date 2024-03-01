@@ -13,11 +13,20 @@
 <body>
     <script src="node_modules/three/build/three.module.min.js"></script>
     <script>
-        //scene
+        /****TODO: EVERY THREEJS PROJECT HAS TO HAVE THIS CODE ******/
+        //create scene
         const scene = new THREE.Scene();
-        // camera (PerspectiveCamera=field of view)
+        // create camera (PerspectiveCamera=field of view)
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000); // FOV(degrees), aspect-ratio, last two args are min/max rendering (near/far) 
-        // renderer
+        // create renderer
+        const renderer = new THREE.WebGLRenderer();
+
+        // set renderer size
+        renderer.setSizeI(window.innerWidth, window.innerHeight);
+        // create renderer DOM element
+        document.body.appendChild(renderer.domElement);
+        // TODO: END MUST HAVE THREEJS CODE
+        
     </script>
 </body>
 </html>
